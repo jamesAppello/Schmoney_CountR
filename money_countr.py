@@ -20,6 +20,7 @@ class ShmoneyCounter:
         a_tens = input("Amount of 10_NOTES::")
         a_fives = input("Amount of 5_NOTES::")
         a_singles = input("Amount of 1_NOTES::")
+        res_file = input("[+] Name your result file (<DATE>); dont worry bout including file extension: ")
         print("calculating.........\n\n")
         print("100s.............", int(self.hundo_countr(a_hundos)))
         print("50s..............", int(self.fifT_countr(a_fifTies)))
@@ -28,12 +29,25 @@ class ShmoneyCounter:
         print("5s...............", int(self.five_countr(a_fives)))
         print("1s...............", int(self.one_countr(a_singles)))
         print("----------------------------------------------------\n")
-        print("TOTAL::", int(self.hundo_countr(a_hundos) + 
-        self.fifT_countr(a_fifTies) + 
-        self.twenT_countr(a_twenTies) +
-        self.ten_countr(a_tens) +
-        self.five_countr(a_fives) +
-        self.one_countr(a_singles)))
+        with open("./result_files/"+res_file+".txt", "w+") as rf:
+            rf.write("$ "+
+                str(int(self.hundo_countr(a_hundos) + 
+                self.fifT_countr(a_fifTies) + 
+                self.twenT_countr(a_twenTies) +
+                self.ten_countr(a_tens) +
+                self.five_countr(a_fives) +
+                self.one_countr(a_singles)))
+            )
+            rf.close()
+        print("SUMMATION_FILE_CREATED!!")
+
+        # print("TOTAL::", int(self.hundo_countr(a_hundos) + 
+        # self.fifT_countr(a_fifTies) + 
+        # self.twenT_countr(a_twenTies) +
+        # self.ten_countr(a_tens) +
+        # self.five_countr(a_fives) +
+        # self.one_countr(a_singles)))
+    
 
     # amount of 100s
     def hundo_countr(self, h):
